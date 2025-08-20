@@ -18,13 +18,13 @@ headings = [h2.get_text() for h2 in soup.find_all("h2")]
 # images
 img = [img["src"] for img in soup.find_all("img") if "src" in img.attrs]
 
-print("Page title: ")
+print("\nPage title: ")
 print(pTitle)
 
-print("Main headings: ")
+print("\nMain headings: ")
 for h in headings:
     print("-", h)
     
-print("Images links: ")
+print("\nImages links: ")
 for links in img:
     print("-", links)
