@@ -73,3 +73,25 @@ def menu():
     while True:
         try:
             print("\n=-=-=-=-=-=-=-=-=- Contact book Menu =-=-=-=-=-=-=-=-=-")
+            print("1. Add Contact")
+            print("2. Remove Contact")
+            print("3. Show Contacts")
+            print("4. Exit")
+
+            choice = input("Enter 1, 2, 3, or 4: ")
+
+            # adding task
+            if choice == "1":
+                name = input("Contact's Name: ")
+                phone = input("Contact's Phone Number (format: xxx-xxx-xxxx): ")
+                email = input("Contact's Email Address: ")
+                address = input("Contact's Home Address: ")
+                
+                contact = Contact(name, phone, email, address)
+                
+                contactBook.add_contact(contact)
+                
+                print("Contact Added ✅")
+                
+            # removing contact
+            def choice == "2":
