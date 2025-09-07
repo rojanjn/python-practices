@@ -1,4 +1,5 @@
 import csv
+import re
 
 class Contact:
     def __init__(self, name, phone, email, address):
@@ -6,9 +7,18 @@ class Contact:
         self.phone = phone
         self.email = email
         self.address = address
-
-    # def __str__(self):
-    #     return f"{self.name} "
+        
+    def getName(self):
+        return self.name
+    
+    def getPhone(self):
+        return self.phone
+    
+    def getEmail(self):
+        return self.email
+    
+    def getAddress(self):
+        return self.address
     
 class List:
     def __init__(self, filename="contacts.csv"):
@@ -36,7 +46,7 @@ class List:
             print("No contacts added to the list.")
         else:
             for i, contact in enumerate(self.contacts, start = 1):
-                print(f"{i}.{contact}")
+                print(f"\n{i}.{contact.getName()}: {contact.getPhone()} / {contact.getEmail()} / {contact.getAddress()}")
                 
     # saving to the csv file
     def save_to_csv(self):
@@ -72,7 +82,7 @@ def menu():
     
     while True:
         try:
-            print("\n=-=-=-=-=-=-=-=-=- Contact book Menu =-=-=-=-=-=-=-=-=-")
+            print("\n=-=-=-=-=-= Contact book Menu =-=-=-=-=-=")
             print("1. Add Contact")
             print("2. Remove Contact")
             print("3. Show Contacts")
