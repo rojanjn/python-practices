@@ -6,8 +6,8 @@ words = [
 ]
 
 # picking a random word
-choose_word = random.choice(words)
-word_length = len(choose_word)
+chosen_word = random.choice(words)
+word_length = len(chosen_word)
 
 display = ["_"]*word_length
 lives = 6 #number of wrong guesses allowed
@@ -20,11 +20,18 @@ print(" ".join(display))
 while "_" in display and lives > 0:
     guess = input("Guess a letter: ").lower()
     
-    if guess in choose_word:
+    if guess in chosen_word:
         for i in range(word_length):
-            if choose_word[i] == guess:
+            if chosen_word[i] == guess:
                 display[i] = guess
                 
     else:
         lives -= 1
         print(f"\033[31m WRONG!\033[0m Lives left: {lives}")
+        
+    print(" ".join(display))
+    
+if "_" not in display:
+    print("YOU WON 🎉")
+else:
+    print(f"YOU LOST 💀 The word was '{chosen_word}'.")
