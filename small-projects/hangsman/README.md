@@ -15,7 +15,7 @@ With multiple categories and many words to choose from.
 
 ## Work in Progress
 - **Multi-menu system**:  
-  Players will be able to choose a category (Animals, Movies, Programming, etc.) before the game starts.
+  Players will be able to choose a category before the game starts.
 - **Improved ASCII art**:  
 
 ---
