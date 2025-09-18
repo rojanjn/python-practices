@@ -69,18 +69,25 @@ stages = [
     """,
 ]
 
-# picking a random word
-chosen_word = random.choice(k_words)
-word_length = len(chosen_word)
+print()
+print("\033[1m=-=-=-=- WELCOME TO HANGSMAN =-=-=-=-\033[0m")
+print("\nChoose a category to play: ")
 
+for i, category in enumerate(categories.keys(), start = 1):
+    print(f"{i}. {category}")
+    
+choice = int(input("\nEnter the number of your choice: "))
+# picking a category
+category_name = list(categories.keys())[choice - 1]
+word_list = categories[category_name]
+
+# picking a random word
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
 display = ["_"] * word_length
 lives = 6 #number of wrong guesses allowed
 
-print()
-print("\033[1m=-=-=-=- WELCOME TO HANGSMAN =-=-=-=-\033[0m")
-print("\nChoose a category please (1. things you might find in the kitchen, 2. ) ")
-print(" ".join(display))
-print("\033[34mCATEGORY: Things you find in the kitchen. \033[0m")
+print(f"\nYou Chose: \033[34m{category_name}\033[0m")
 
 # main game loop
 while "_" in display and lives > 0:
