@@ -1,8 +1,7 @@
 # Hangman Game (Python + ASCII)
 
 A simple **Hangman game** built with Python for the terminal.  
-Right now it’s the classic single-word version with ASCII art.  
-I’m also working on adding a **multi-menu system** (choose categories like Animals, Movies, Programming). This feature is not fully implemented yet but it’s on the roadmap. 🚧
+With multiple categories and many words to choose from.
 
 ---
 
