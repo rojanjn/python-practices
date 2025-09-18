@@ -1,9 +1,20 @@
 import random
 
 # list of words
-words = [
-    "spoon", "fork", "knife", "plate", "pot", "refrigerator", "freezer", "food", "oven", "bowl", "peeler", "grater", "ladle", "stove", "microwave", "whisk", "spatula", "glass", "mug", "cabinet", "container", "sink", "dishwasher", "cup", "pantry"
-]
+categories = {
+    "things you find in the kitchen": [
+        "spoon", "fork", "knife", "plate", "pot", "refrigerator", "freezer", "food", "oven", "bowl", "peeler", "grater", "ladle", "stove", "microwave", "whisk", "spatula", "glass", "mug", "cabinet", "container", "sink", "dishwasher", "cup", "pantry"
+        ],
+    "movie names": [
+        "interstellar", "twilight", "harrypotter", "matrix", "inception", "titanic", "gladiator", "annabelle", "clueless", "parasite", "superman", "batman", "psychosynthesis", "separation", "midsommer", "cobacabana"
+        ],
+    "one-word celebrity names": [
+        "oprah", "adele", "rihanna", "eminem", "madonna", "usher", "beyonce", "shakira", "sting", "queen", "sia", "kesha", "sza", "ronaldo", "messi", "obama", "avicii", "cardib", "mitski", "zendaya", "bangchan", "nayeon"
+        ],
+    "countries": [
+        "canada", "america", "japan", "oman", "persia", "ireland", "southkorea", "australia", "finland", "rwanda", "hungary", "argentina", "morocco", "kazakhstan", "azerbaijan"
+        ]
+}
 
 # ascii art
 stages = [
@@ -59,7 +70,7 @@ stages = [
 ]
 
 # picking a random word
-chosen_word = random.choice(words)
+chosen_word = random.choice(k_words)
 word_length = len(chosen_word)
 
 display = ["_"] * word_length
@@ -67,6 +78,7 @@ lives = 6 #number of wrong guesses allowed
 
 print()
 print("\033[1m=-=-=-=- WELCOME TO HANGSMAN =-=-=-=-\033[0m")
+print("\nChoose a category please (1. things you might find in the kitchen, 2. ) ")
 print(" ".join(display))
 print("\033[34mCATEGORY: Things you find in the kitchen. \033[0m")
 
