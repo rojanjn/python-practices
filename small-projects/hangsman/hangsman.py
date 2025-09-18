@@ -5,11 +5,64 @@ words = [
     "spoon", "fork", "knife", "plate", "pot", "refrigerator", "freezer", "food", "oven", "bowl", "peeler", "grater", "ladle", "stove", "microwave", "whisk", "spatula", "glass", "mug", "cabinet", "container", "sink", "dishwasher", "cup", "pantry"
 ]
 
+# ascii art
+stages = [
+    """
+     +---+
+         |
+         |
+         |
+        ===
+    """,
+    """
+     +---+
+     O   |
+         |
+         |
+        ===
+    """,
+    """
+     +---+
+     O   |
+     |   |
+         |
+        ===
+    """,
+    """
+     +---+
+     O   |
+    /|   |
+         |
+        ===
+    """,
+    """
+     +---+
+     O   |
+    /|\  |
+         |
+        ===
+    """,
+    """
+     +---+
+     O   |
+    /|\  |
+    /    |
+        ===
+    """,
+    """
+     +---+
+     O   |
+    /|\  |
+    / \  |
+        ===
+    """,
+]
+
 # picking a random word
 chosen_word = random.choice(words)
 word_length = len(chosen_word)
 
-display = ["_"]*word_length
+display = ["_"] * word_length
 lives = 6 #number of wrong guesses allowed
 
 print()
@@ -19,6 +72,7 @@ print("\033[34mCATEGORY: Things you find in the kitchen. \033[0m")
 
 # main game loop
 while "_" in display and lives > 0:
+    print(stages[min(6 - lives, 6)])
     guess = input("\nGuess a letter: ").lower()
     
     if guess in chosen_word:
