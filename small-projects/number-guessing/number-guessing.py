@@ -67,17 +67,13 @@ time.sleep(0.5)
 slow_print(f"{Fore.LIGHTGREEN_EX}{Style.BRIGHT}GOOOO!!!", 0.04)
 time.sleep(1)
 
-
-# print("\n\033[1m----------- WELCOME TO THE NUMBER-GUESSING GAME -----------\033[0m")
-# print("""
-# Three difficulty levels, one mission: guess the number.
-# The fewer chances you have, the sweeter the victory.\n
-# Send me a screenshot of your best run — I'll add your name to the README as the reigning champion 👑\nGuess it right on your first try, though… and you might just unlock a *secret reward*. ;)
-# """)
-# print("----------- Let the game begin... -----------")
-
 # getting user's name
 name = input("\nWhat is your name gamer? ")
+print(f"\nWelcome to the game {name}!")
+# choosing difficulty
+print(f"\n{name}, choose difficulty level: ")
+print("1. Easy (Unlimited choices) \n2. Medium (Up to 25 choices)\n3. Hard (5 choices ONLY)")
+difficulty = input("Choose 1, 2, or 3: ")
 
 # get user's guesses
 guess = None
