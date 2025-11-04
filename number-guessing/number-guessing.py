@@ -107,13 +107,25 @@ guess = None
 count = 0
 
 while guess != secretNum:
+    if max_attempts is not None and count >= max_attempts:
+        slow_print(f"{MAGENTA}Out of attempts, {name} :( \nThe number was {secretNum}.\nTry again and I KNOW you'll get it this time!{RESET}")
+        break
+    
     count += 1
-
-    guess = int(input("\nGuess a number between 1 to 100: "))
+    try:
+        guess = int(input("\nGuess a number between 1 to 100: "))
+    except ValueError:
+        print(f"\033[31mThat's not a valid number, {name}!\033[0m Try again!{RESET}")
+        continue
     
     if guess < secretNum:
         print(f"\033[31mToo low!\033[0m Attempt #{count}")
     elif guess > secretNum:
         print(f"\033[31mToo high!\033[0m Attempt #{count}")
     else:
-        print("\n\033[32mYOU WON 🎉\033[0m Honestly, you did better than ME!!!")
+        slow_print(f"\n\033[32m{BOLD}YOU WON 🎉\033[0m Honestly, you did better than ME!!!")
+        slow_print(f"{CYAN}Incredible work, {name}! You guessed it in {count} attempts!{RESET}")
+        
+        if count == 1:
+            slow_print(f"WAIT OH MY GOD!!! FIRST TRY?!!! You are an absolute goat!{RESET}LEGEND 🎉")
+            break
