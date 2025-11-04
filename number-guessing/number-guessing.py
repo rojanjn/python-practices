@@ -77,12 +77,31 @@ time.sleep(1)
 
 # getting user's name
 name = input("\nWhat is your name gamer? ")
-print(f"\nWelcome to the game {name}!")
+slow_print(f"{GREEN}Welcome, {name}! Ready to test your instincts and luck? 🎯{RESET}", 0.04)
+
+user_tries = input(f"\n{YELLOW}Before we begin, tell me how many tries do you think it is gonna take you to guess: {RESET}")
+slow_print(f"{MAGENTA}Ooo {user_tries} times? Wow! That's interesting... maybe it'll turn out like that, we shall see! 🍀{RESET}")
+time.sleep(1)
+
 # choosing difficulty
 print(f"\n{name}, choose difficulty level: ")
-print("1. Easy (Unlimited choices) \n2. Medium (Up to 25 choices)\n3. Hard (5 choices ONLY)")
+print("1. Easy (Unlimited attempts) \n2. Medium (Up to 25 attempts)\n3. Hard (Only 5 attempts!)")
+
 difficulty = input("Choose 1, 2, or 3: ")
 
+# applying difficulty rules
+if difficulty == "1":
+    max_attempts = None
+    slow_print(f"{GREEN}You chose easy. Take your time, {name}. No pressure :){RESET}")
+elif difficulty == "2":
+    slow_print(f"{YELLOW}Medium Mode! Nice choice {name}. Balance of risk and glory ;){RESET}")
+elif difficulty == "3":
+    slow_print(f"{MAGENTA}Oh my.. Hard mode?! Gang, {name}, you're savage. Let's see if you can beat the ruthless machine then B){RESET}")
+else:
+    max_attempts = None
+    slow_print(f"{CYAN}Hmm.. I'll assume you meant Easy, {name}. Well, LOL{RESET}")
+    
+# GAME LOOP
 # get user's guesses
 guess = None
 count = 0
