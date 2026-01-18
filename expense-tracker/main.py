@@ -1,6 +1,13 @@
 from expenses import funcs
 
+# COLORS
+GREEN = "\033[92m"
+RED = "\033[91m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
 expenses = []
+budget = {}
 
 def main():
     while True:
@@ -87,6 +94,8 @@ def main():
             month = int(input("Month (1-12): ").strip())
             budget_amount = float(input("Budget amount: ").strip())
             funcs.set_budget(expenses, month, budget_amount)
+
+            funcs.show_budget_status(expenses, budget, month)
 
         # exiting the app
         elif view_choice == "6":
