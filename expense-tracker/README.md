@@ -34,4 +34,5 @@ python expense-tracker.py
 
 ---
 
+Inspired By the [Expense Tracker](https://roadmap.sh/projects/expense-tracker) project featured in the [Backend Roadmap](https://roadmap.sh/backend) from [roadmap.sh](https://roadmap.sh/).
 https://roadmap.sh/projects/expense-tracker
