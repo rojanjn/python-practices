@@ -31,3 +31,6 @@ def view_month(expenses, inp_month):
 
 def set_budget(expenses, budget):
     pass
+
+def over_budget(expenses, budget, date_str):
+    pass
