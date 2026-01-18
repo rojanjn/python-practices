@@ -1,8 +1,23 @@
 # Expense Tracker Functions
 from datetime import datetime
 
+# COLORS
+GREEN = "\033[92m"
+RED = "\033[91m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
 def _parse_date(date_str: str) -> datetime:
-    return datetime.fromisoformat(date_str)
+    date_str = date_str.strip()
+    parts = date_str.split("-")
+
+    if len(parts) !=3:
+        raise ValueError("Date must be in YYYY-MM-DD format.")
+
+    y, m, d = parts
+    normalized = f"{int(y):04d}-{int(m):02d}-{int(d):02d}"    
+    
+    return datetime.fromisoformat(normalized)
 
 def add_expense(expenses, category, amount, date_str):
     if not expenses:
@@ -17,9 +32,7 @@ def add_expense(expenses, category, amount, date_str):
         "date": date_str
     })
 
-    print(f"\n===== Expense added with ID {new_id}")
-
-    expenses.append(expenses)
+    print(f"\n{GREEN}=== Expense added with ID {new_id}{RESET}")
 
 def update_expense(expenses, expense_id, category=None, amount=None, date=None):
     for exp in expenses:
@@ -31,31 +44,35 @@ def update_expense(expenses, expense_id, category=None, amount=None, date=None):
             if date is not None:
                 exp["date"] = date
 
-            print("\n===== Expense updated.")
+            print(f"\n{GREEN}=== Expense updated.{RESET}")
             return
         
-        print("\n===== Expense not found.")
+    print(f"\n{RED}=== Expense not found.{RESET}")
 
 def delete_expense(expenses, expense_id):
     for exp in expenses:
         if exp["id"] == expense_id:
             expenses.remove(exp)
             
-            print("\n===== Expense deleted.")
+            print(f"\n{GREEN}=== Expense deleted.{RESET}")
             return
         
-    print("\n===== Expense not found.")
+    print(f"\n{RED}=== Expense not found.{RESET}")
 
 def view_all(expenses):
     if not expenses:
-        print("\n===== No expenses yet.")
+        print(f"\n{YELLOW}=== No expenses yet.{RESET}")
         return
     
     total = 0.0
     print("\n--- All expenses ---")
 
     for exp in expenses:
-        print(f'ID {exp["id"]} || {exp["date"]} || {exp["category"]} || ${exp["amount"]:.2f}')
+        print(
+            f'\nID {exp["id"]} || {exp["date"]} || '
+            f'{exp["category"]} || ${exp["amount"]:.2f}'
+        )
+        total += exp["amount"]
 
     print(f"Total: ${total:.2f}")
 
@@ -67,19 +84,25 @@ def view_month(expenses, inp_month):
     for exp in expenses:
         exp_date = _parse_date(exp["date"])
         
-        if exp_date.inp_month == inp_month:
-            print(f'ID {exp["id"]} | {exp["date"]} | {exp["category"]} | ${exp["amount"]:.2f}')
+        if exp_date.month == inp_month:
+            print(
+                f'\nID {exp["id"]} | {exp["date"]} | '
+                f'{exp["category"]} | ${exp["amount"]:.2f}'
+            )
             total += exp["amount"]
             found = True
 
     if not found:
-        print("===== No expenses for this month.")
+        print(f"{YELLOW}=== No expenses for this month.{RESET}")
     else:
         print(f"\nMonthly total: ${total:.2f}")
 
 def set_budget(budget, month, budget_amount):
     budget[int(month)] = float(budget_amount)
-    print(f"===== Budget set for month {month}: ${float(budget_amount):.2f}")
+    print(
+        f"{GREEN}=== Budget set for month {month}: "
+        f"${float(budget_amount):.2f} ==={RESET}"
+    )  
 
 def _month_total(expenses, month):
     total = 0.0
@@ -93,7 +116,7 @@ def _month_total(expenses, month):
 def show_budget_status(expenses, budget, month):
     month = int(month)
     if month not in budget:
-        print("No budget set for that month.")
+        print(f"{YELLOW}No budget set for that month.{RESET}")
         return
 
     spent = _month_total(expenses, month)
@@ -101,15 +124,19 @@ def show_budget_status(expenses, budget, month):
 
     print(f"Month {month}: spent ${spent:.2f} / budget ${bud:.2f}")
     if spent > bud:
-        print("\n=====WARNING: You exceeded your budget!=====")
+        print(f"\n{YELLOW}WARNING: You exceeded your budget!{RESET}")
 
 def over_budget(expenses, budget, date_str):
-    # called after adding/updating an expense
-    inp_month = _parse_date(date_str).inp_month
-    if inp_month not in budget:
+    month = _parse_date(date_str).month
+    
+    if month not in budget:
         return
 
-    spent = _month_total(expenses, inp_month)
+    spent = _month_total(expenses, month)
     bud = budget[month]
+
     if spent > bud:
-        print(f"⚠ WARNING: Month {inp_month} is over budget! (${spent:.2f} > ${bud:.2f})")
+        print(
+            f"\n{YELLOW}WARNING: Month {month} is over budget! "
+            f"(${spent:.2f} > ${bud:.2f}){RESET}"
+        )
