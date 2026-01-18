@@ -1,5 +1,37 @@
 # Expense Tracker Functions
 from datetime import datetime
+import csv
+import os
+
+# CSV file functions
+CSV_FILE = "expenses/expenses.csv"
+
+def load_from_csv():
+    expenses = []
+
+    if not os.path.exists(CSV_FILE):
+        return expenses
+
+    with open(CSV_FILE, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            expenses.append({
+                "id": int(row["id"]),
+                "category": row["category"],
+                "amount": float(row["amount"]),
+                "date": row["date"]
+            })   
+    return expenses
+
+def save_to_csv(expenses):
+    with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=["id", "category", "amount", "date"]
+        )
+
+        writer.writeheader()
+        writer.writerows(expenses)
 
 # COLORS
 GREEN = "\033[92m"
@@ -7,6 +39,7 @@ RED = "\033[91m"
 YELLOW = "\033[93m"
 RESET = "\033[0m"
 
+# main functions
 def _parse_date(date_str: str) -> datetime:
     date_str = date_str.strip()
     parts = date_str.split("-")
@@ -31,6 +64,7 @@ def add_expense(expenses, category, amount, date_str):
         "amount": float(amount),
         "date": date_str
     })
+    save_to_csv(expenses)
 
     print(f"\n{GREEN}=== Expense added with ID {new_id}{RESET}")
 
@@ -44,6 +78,7 @@ def update_expense(expenses, expense_id, category=None, amount=None, date=None):
             if date is not None:
                 exp["date"] = date
 
+            save_to_csv(expenses)
             print(f"\n{GREEN}=== Expense updated.{RESET}")
             return
         
@@ -54,6 +89,7 @@ def delete_expense(expenses, expense_id):
         if exp["id"] == expense_id:
             expenses.remove(exp)
             
+            save_to_csv(expenses)
             print(f"\n{GREEN}=== Expense deleted.{RESET}")
             return
         

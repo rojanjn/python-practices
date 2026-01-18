@@ -6,7 +6,7 @@ RED = "\033[91m"
 YELLOW = "\033[93m"
 RESET = "\033[0m"
 
-expenses = []
+expenses = funcs.load_from_csv()
 budget = {}
 
 def main():
