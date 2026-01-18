@@ -2,22 +2,22 @@
 from datetime import date
 from typing import Any, Dict, List, Optional
 
-def add_expense(id, category, amount, date):
+def add_expense(expenses, id, category, amount, date):
     pass
 
-def update_expense(id, ):
+def update_expense(expenses, id):
     pass
 
-def delete_expense(id):
+def delete_expense(expenses, id):
     pass
 
 def view_expense():
     def view_all():
         pass
 
-    def view_month(month):
+    def view_month(expenses, month):
         pass
     pass
 
-def set_budget(budget):
+def set_budget(expenses, budget):
     pass
