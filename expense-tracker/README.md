@@ -1,36 +1,49 @@
 # Expense Tracker (Python - CLI)
 
-A simple **Expense Tracker** built with Python for the terminal.
+A simple **command-line** expense tracker written in Python.  
+It allows users to add, update, delete, and view expenses, set monthly budgets, and receive warnings when budgets are exceeded.
+
+This project is part of my Python practice and focuses on clean structure, modular code, and real-world features.
 
 ---
 
 ## Features
-- to be updated
+- Add expenses with category, amount, and date
+- Update existing expenses
+- Delete expenses
+- View all expenses
+- View expenses by month
+- Set monthly budgets
+- Budget over-limit warnings
+- Persistent storage using CSV
 
 ---
 
-## Work in Progress
-- to be updated
+## Project Structure
+
+|
+|- main.py
+|- README.md
+|- expenses/
+| |- init.py
+| |-funcs.py
+| |- expenses.csv
+|
+|- .venv/
 
 ---
 
-## Demo
-```
-to be updated
-```
+## Requirements
+
+- Python 3.10+
+- No external libraries required
 
 ---
 
-## Getting Started 
+## How to Run 
 - Clone this repo
-```bash
-git clone https://github.com/rojanjn/python-practices/small-projects/expense-tracker.git
-cd expense-tracker
-```
+- Navigate to the project folder
 - Run the app
-```bash
-python expense-tracker.py
-```
 
 ---
 
