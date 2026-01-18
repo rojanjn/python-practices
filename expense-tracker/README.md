@@ -19,20 +19,6 @@ This project is part of my Python practice and focuses on clean structure, modul
 
 ---
 
-## Project Structure
-
-|
-|- main.py
-|- README.md
-|- expenses/
-| |- init.py
-| |-funcs.py
-| |- expenses.csv
-|
-|- .venv/
-
----
-
 ## Requirements
 
 - Python 3.10+
