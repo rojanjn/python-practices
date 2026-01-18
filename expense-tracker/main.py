@@ -1,4 +1,3 @@
-import argparse as ar
 from expenses import funcs
 
 expenses = []
@@ -37,32 +36,35 @@ def main():
             # updating the category
             if update_choice == "1":
                 new_category = input("New category: ").strip()
-                funcs.update_expense(expenses, id, category=new_category)
+                funcs.update_expense(expenses, expense_id, category=new_category)
 
             # updating the amount
             elif update_choice == "2":
                 new_amount = float(input("New amount: ").strip())
-                funcs.update_expense(expenses, id, amount=new_amount)
+                funcs.update_expense(expenses, expense_id, amount=new_amount)
 
             # updating the date
             elif update_choice == "3":
                 new_date = input("New date (YYYY-MM-DD): ").strip()
-                funcs.update_expense(expenses, id, date_str=new_date)
+                funcs.update_expense(expenses, expense_id, date_str=new_date)
                 funcs.over_budget(expenses, budget, new_date)
 
             else: 
                 print("INVALID INPUT! Try again...")
-                
+
         # delete expense
         elif choice == "3":
-            expense_id = int(input("Enter expense ID to delete: "))
+            expense_id = int(input("Enter expense ID to delete: ").strip())
             funcs.delete_expense(expenses, expense_id)
 
         # view expenses
         elif choice == "4":
+            print("\n--- View Expenses ---")
             print("1. View a summary of all")
             print("2. View a summary a specific month")
-            view_choice = input("Please choose an option: ")
+            print("3. Back")
+
+            view_choice = input("Please choose an option: ").strip()
             
             # view a summary of all expenses
             if view_choice == "1":
@@ -70,13 +72,21 @@ def main():
 
             # view a summary of a specific month's expenses
             elif view_choice == "2":
-                inp_month = input("Enter month (1-12): ")
+                inp_month = int(input("Enter month (1-12): ").strip())
                 funcs.view_month(expenses, inp_month)
+
+            # back to the main menu
+            elif view_choice == "3":
+                continue
+            
+            else:
+                print("INVALID INPUT! Try again...")
 
         # set a monthly budget
         elif choice == "5":
-            budget = float(input("Set your monthly budget: "))
-            func.set_budget(expenses, amount)
+            month = int(input("Month (1-12): ").strip())
+            budget_amount = float(input("Budget amount: ").strip())
+            funcs.set_budget(expenses, month, budget_amount)
 
         # exiting the app
         elif view_choice == "6":
