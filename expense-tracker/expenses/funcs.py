@@ -4,7 +4,7 @@ import csv
 import os
 
 # CSV file functions
-CSV_FILE = "expenses/expenses.csv"
+CSV_FILE = "expense-tracker/expenses/expenses.csv"
 
 def load_from_csv():
     expenses = []
