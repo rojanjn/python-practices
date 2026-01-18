@@ -7,6 +7,7 @@ while True:
     print("2. Update expense")
     print("3. Delete expense")
     print("4. View expenses")
+    print("5. Set a budget")
 
     choice = input("Please choose an option: ")
 
@@ -20,8 +21,8 @@ while True:
 
     elif choice == "4":
         while True:
-            print("1. View specific date")
-            print("2. View all")
+            print("1. View a summary of all expenses")
+            print("2. View a summary of expenses for a specific month")
             print("3. exit to the main menu")
             
             view_choice = input("Please choose an option: ")
