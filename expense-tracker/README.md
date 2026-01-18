@@ -7,6 +7,9 @@ This project is part of my Python practice and focuses on clean structure, modul
 
 ---
 
+Inspired By the https://roadmap.sh/projects/expense-tracker
+---
+
 ## Features
 - Add expenses with category, amount, and date
 - Update existing expenses
@@ -30,8 +33,3 @@ This project is part of my Python practice and focuses on clean structure, modul
 - Clone this repo
 - Navigate to the project folder
 - Run the app
-
----
-
-Inspired By the [Expense Tracker](https://roadmap.sh/projects/expense-tracker) project featured in the [Backend Roadmap](https://roadmap.sh/backend) from [roadmap.sh](https://roadmap.sh/).
-https://roadmap.sh/projects/expense-tracker
