@@ -7,9 +7,6 @@ This project is part of my Python practice and focuses on clean structure, modul
 
 ---
 
-Inspired By the https://roadmap.sh/projects/expense-tracker
----
-
 ## Features
 - Add expenses with category, amount, and date
 - Update existing expenses
