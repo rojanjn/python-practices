@@ -57,7 +57,7 @@ def main():
                 funcs.over_budget(expenses, budget, new_date)
 
             else: 
-                print("INVALID INPUT! Try again...")
+                print(f"{RED}INVALID INPUT! Try again...{RESET}")
 
         # delete expense
         elif choice == "3":
@@ -87,23 +87,23 @@ def main():
                 continue
             
             else:
-                print("INVALID INPUT! Try again...")
+                print(f"{RED}INVALID INPUT! Try again...{RESET}")
 
         # set a monthly budget
         elif choice == "5":
             month = int(input("Month (1-12): ").strip())
             budget_amount = float(input("Budget amount: ").strip())
-            funcs.set_budget(expenses, month, budget_amount)
-
-            funcs.show_budget_status(expenses, budget, month)
+            
+            funcs.set_budget(budget, month, budget_amount)
+            funcs.show_budget_status(expenses, budget, month) 
 
         # exiting the app
-        elif view_choice == "6":
+        elif choice == "6":
             print("Exiting...")
             break
         
         else:
-            print("INVALID INPUT. Try again...")
+            print(f"{RED}INVALID INPUT! Try again...{RESET}")
         
 if __name__ == "__main__":
     main()
